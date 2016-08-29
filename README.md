@@ -37,3 +37,5 @@
 
 - bootstrap fileupload 插件的使用
 - http跨域问题
+
+** 列出问题，详细信息之后继续补充 **
