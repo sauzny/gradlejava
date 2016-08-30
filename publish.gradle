@@ -1,6 +1,10 @@
-def versionString = file('src/main/resources/version.txt').text.trim()
+// 局部变量使用关键字def声明，从配置文件中获取，版本号
 
-group = 'com.sauzny'
+def groupString = "com.sauzny"
+def artifactId = "gradlejava"
+def versionString=file('src/main/resources/version.txt').text.trim()
+
+group = groupString
 version = versionString
 
 // custom tasks for creating source/javadoc jars
@@ -35,4 +39,18 @@ publishing {
 }
 
 
+//apply plugin: 'maven' -- 未知是否需要
+//上传到nexus -- 未测试
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            repository(url: "http://localhost:8081/nexus/content/repositories/thirdparty") {
+//                authentication(userName: "admin", password: "admin123")
+//            }
+//            pom.groupId = group
+//            pom.artifactId = artifactId
+//            pom.version = version
+//        }
+//    }
+//}
 

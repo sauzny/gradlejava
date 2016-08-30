@@ -1,50 +1,113 @@
-// 从配置文件中获取，版本号
-def versionString = file('src/main/resources/version.txt').text.trim()
 
-// spring-boot 版本号
+// 局部变量使用关键字def声明，从配置文件中获取，版本号
+
+def groupString = "com.sauzny"
+def artifactId = "gradlejava"
+def versionString=file('src/main/resources/version.txt').text.trim()
+
+println ""
+println "//自定义输出//////////////////////////////////"
+println "//"
+println "//  groupString : " + groupString
+println "//  artifactId : " + artifactId
+println "//  versionString : " + versionString
+println "//"
+println "//////////////////////////////////////////"
+println ""
+
+// project的属性
+group = groupString
+version = versionString
+
+// 构建脚本
 buildscript {
+
+	// 自定义属性，使用ext扩展块可以一次添加多个属性
 	ext {
 		springBootVersion = '1.4.0.RELEASE'
 	}
+	
 	repositories {
+	
+		// 本地系统文件
+		//ivy { url "../local-repo" }
+		
+		// 本地 maven 仓库
 		//mavenLocal()
-		//mavenCentral()
-		jcenter()
+		
+		// 远程 maven 仓库
+		//maven { url "http://repo.mycompany.com/maven2" }
+		
+		// maven中央仓库
+		mavenCentral()
+		
+		// jcenter中央仓库
+		//jcenter()
 	}
+	
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
 
+// 依赖的插件 java
 
+// java插件添加的task
+// build task 		当运行gradle build命令时		Gradle将会编译和测试你的代码，并且创建一个包含类和资源的JAR文件。
+// clean task 		当运行gradle clean命令时		Gradle将会删除build生成的目录和所有生成的文件。
+// assemble task 	当运行gradle assemble命令时	Gradle将会编译并打包代码，但是并不运行单元测试。
+// check task 		当运行gradle check命令时		Gradle将会编译并测试你的代码，其他的插件会加入更多的检查步骤。
+
+// task build - clean 删除项目根目录下生成build文件夹
+// task build - bulid 打包，在项目根目录下生成build文件夹，build之前先clean
 apply plugin: 'java'
+
+// 依赖的插件  eclipse spring-boot groovy
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
-
-apply plugin: 'maven-publish'
 apply plugin: 'groovy'
 
+// maven-publish task: publish - publishToMavenLocal 发布到本地maven仓库 默认的.m2中
+// publish只是将根目录中的build文件中的内容移动过去，所以 应该 clean -> build -> publishToMavenLocal
+// 引入其他配置文件
+apply plugin: 'maven-publish'
 apply from: file('publish.gradle')
 
-jar {
-	baseName = 'gradlejava'
-	version = versionString
-}
 
+//编译时使用的java版本，设置字符集
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-    
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+// 仓库
 repositories {
- 	//mavenCentral()
-	jcenter()
+	
+		// 本地系统文件
+		//ivy { url "../local-repo" }
+		
+		// 本地 maven 仓库
+		//mavenLocal()
+		
+		// 远程 maven 仓库
+		//maven { url "http://repo.mycompany.com/maven2" }
+		
+		// maven中央仓库
+		//mavenCentral()
+		
+		// jcenter中央仓库
+		jcenter()
 }
 
+// 依赖
 dependencies {
 
+
+	// 编译阶段
 	compile ('org.springframework.boot:spring-boot-starter-web') {
+		// 排除tomcat的依赖
 		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
 	}
+	
 	compile ('org.springframework.boot:spring-boot-starter-undertow')
 	
     compile 'org.slf4j:slf4j-api:1.7.21'
@@ -53,6 +116,8 @@ dependencies {
 	compile 'commons-fileupload:commons-fileupload:1.3.2'
     compile "net.coobird:thumbnailator:0.4.8"
 	
+	
+	// 测试阶段
 	testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile 'junit:junit:4.12'
 }
@@ -64,7 +129,9 @@ eclipse {
 	}
 }
 
+// 排除资源文件
 processResources {
-    exclude { "**/application.properties" }
+    exclude { "随便写点什么就能将所有的资源文件排除，我也没有找到指定文件的排除方法"}
 }
+
 
