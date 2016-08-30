@@ -118,6 +118,7 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
 选择Complete distribution (binaries, sources and offline documentation)
 配置环境变量`C:\gradle-2.14.1\bin`
 检查配置结果`gradle -v`
+
 ![win-gradle.png](ext/win-gradle.png)
 
 - ##### **eclipse-gradle插件的使用**
@@ -131,14 +132,18 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
 
 4.在eclipse中创建gradle-progect，new project选择 gradle， 一直下一步。
 ![gradle-java-01.png](ext/gradle-java-01.png)
+
 创建项目结果
 ![gradle-java-02.png](ext/gradle-java-02.png)
+
 调整eclipse试图，在Window–>Show View–>Others…中选择 gradle task
 ![gradle-java-03.png](ext/gradle-java-03.png)
+
 在gradle task视图中，build可以编译项目，项目根目录下生成build文件夹
 ![gradle-java-04.png](ext/gradle-java-04.png)
 
 - ##### **gradled的配置文件build，引入依赖，排除依赖，设置字符集**
+
 build.gradle
 
 ```
