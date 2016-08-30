@@ -1,11 +1,7 @@
 package com.sauzny.gradlejava.test;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
-import java.util.TimeZone;
 import java.util.UUID;
 
 
@@ -36,6 +32,8 @@ public class AppTest {
 		System.out.println(String.join("/", new String[]{"a","b","c"}));
 
 		String timeStr = LocalDateTime.now().toString()+ZonedDateTime.now().getOffset().toString();
+		
+		System.out.println(timeStr);
 		
 		System.out.println(timeStr.replace("-", "").replace("T", "").replace(":", ""));
 

@@ -1,7 +1,6 @@
 package com.sauzny.gradlejava;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -11,7 +10,6 @@ import com.sauzny.gradlejava.utils.CommonConfUtils;
 
 
 @Configuration
-@ConfigurationProperties(prefix="service")
 public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
 
 	@Autowired private CommonConfUtils commonConfUtils;
@@ -46,7 +44,5 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
 				.allowCredentials(true)
 				.maxAge(3600);
 	}
-	
-
 	
 }

@@ -1,10 +1,13 @@
+// 从配置文件中获取，版本号
+def versionString = file('src/main/resources/version.txt').text.trim()
 
-
+// spring-boot 版本号
 buildscript {
 	ext {
 		springBootVersion = '1.4.0.RELEASE'
 	}
 	repositories {
+		//mavenLocal()
 		//mavenCentral()
 		jcenter()
 	}
@@ -25,7 +28,7 @@ apply from: file('publish.gradle')
 
 jar {
 	baseName = 'gradlejava'
-	version = '0.0.3-SNAPSHOT'
+	version = versionString
 }
 
 sourceCompatibility = 1.8

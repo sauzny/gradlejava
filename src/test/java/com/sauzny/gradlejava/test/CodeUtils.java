@@ -1,7 +1,5 @@
 package com.sauzny.gradlejava.test;
 
-import java.util.UUID;
-
 import com.sauzny.gradlejava.cognitivej.detect.DetectFacesFromImageUrlExample;
 import com.sauzny.gradlejava.cognitivej.detect.DetectSingleFaceFromFileExample;
 

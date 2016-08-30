@@ -32,6 +32,4 @@ public final class SpringUtils {
 		SpringUtils.applicationContext = applicationContext;
 	}
 	
-	
-	
 }

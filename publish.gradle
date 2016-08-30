@@ -1,4 +1,5 @@
 def versionString = file('src/main/resources/version.txt').text.trim()
+
 group = 'com.sauzny'
 version = versionString
 
