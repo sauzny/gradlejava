@@ -28,13 +28,13 @@ eclipse如不过不支持java8，可自行安装插件，eclipse中依次打开�
 
 #### 1）java8时间工具包
 
-输出一个带有时区的时间戳：`LocalDateTime.now().toString()+ZonedDateTime.now().getOffset().toString();`
-输出结果：`2016-08-30T10:57:11.544+08:00`
+* 输出一个带有时区的时间戳：`LocalDateTime.now().toString()+ZonedDateTime.now().getOffset().toString();`
+* 输出结果：`2016-08-30T10:57:11.544+08:00`
 
 #### 2）获取applicationContext
 
-需要在一个不在spring容器中的类中引入一个spring管理的实例。
-使用实例名字获取一个spring管理的实例。
+* 需要在一个不在spring容器中的类中引入一个spring管理的实例。
+* 使用实例名字获取一个spring管理的实例。
 
 启动函数：
 ```
@@ -115,10 +115,10 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
 
 #### 1）win-gradle安装
 
-[官网下载地址](https://gradle.org/gradle-download/)
-选择Complete distribution (binaries, sources and offline documentation)
-配置环境变量`C:\gradle-2.14.1\bin`
-检查配置结果`gradle -v`
+* [官网下载地址](https://gradle.org/gradle-download/)
+* 选择Complete distribution (binaries, sources and offline documentation)
+* 配置环境变量`C:\gradle-2.14.1\bin`
+* 检查配置结果`gradle -v`
 
 ![win-gradle.png](ext/win-gradle.png)
 
@@ -132,7 +132,7 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
 3.安装成功后，可以在Window–>Show View–>Others…中和File–>New–> Other…中看到增加的Gradle选项。配置gradle的目录。
 
 4.在eclipse中创建gradle-progect，new project选择 gradle， 一直下一步。
-5.
+
 ![gradle-java-01.png](ext/gradle-java-01.png)
 
 创建项目结果
