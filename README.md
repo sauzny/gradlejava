@@ -26,12 +26,12 @@
 
 eclipse如不过不支持java8，可自行安装插件，eclipse中依次打开“Help”–》“Eclipse Marketplace”,在搜索栏中输入“java8”进行搜索
 
-- ##### java8时间工具包
+#### 1）java8时间工具包
 
 输出一个带有时区的时间戳：`LocalDateTime.now().toString()+ZonedDateTime.now().getOffset().toString();`
 输出结果：`2016-08-30T10:57:11.544+08:00`
 
-- ##### 获取applicationContext
+#### 2）获取applicationContext
 
 需要在一个不在spring容器中的类中引入一个spring管理的实例。
 使用实例名字获取一个spring管理的实例。
@@ -69,7 +69,7 @@ public final class SpringUtils {
 }
 ```
 
-- ##### spring boot 指定外部静态资源&&跨域设置
+#### 3）spring boot 指定外部静态资源&&跨域设置
 
 ```
 @Configuration
@@ -113,7 +113,8 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
 
 #### 四、gradle
 
-- ##### win-gradle安装
+#### 1）win-gradle安装
+
 [官网下载地址](https://gradle.org/gradle-download/)
 选择Complete distribution (binaries, sources and offline documentation)
 配置环境变量`C:\gradle-2.14.1\bin`
@@ -121,7 +122,7 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
 
 ![win-gradle.png](ext/win-gradle.png)
 
-- ##### eclipse-gradle插件的使用
+#### 2）eclipse-gradle插件的使用
 
 1.eclipse中依次打开“Help”–》“Eclipse Marketplace”,在搜索栏中输入“buildship”进行搜索；
 ![buildship.png](ext/buildship.png)
@@ -146,7 +147,7 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
 
 ![gradle-java-04.png](ext/gradle-java-04.png)
 
-- ##### gradled的配置文件build，引入依赖，排除依赖，设置字符集
+#### 3）gradled的配置文件build，引入依赖，排除依赖，设置字符集
 
 build.gradle
 
@@ -157,8 +158,8 @@ build.gradle
 
 ### 五、web前端
 
-- bootstrap fileupload 插件的使用
-- http跨域问题
+#### 1）bootstrap fileupload 插件的使用
+#### 2）http跨域问题
 
 ### 六、遗留问题
 
