@@ -354,7 +354,76 @@ publishing {
 ### 五、web前端
 
 #### 1）bootstrap fileupload 插件的使用
+
+依赖版本：
+
+![bootstrap-3.x-blue](https://img.shields.io/badge/bootstrap-3.x-blue.svg)
+![bootstrap-3.x-blue](https://img.shields.io/badge/jquery-2.x-blue.svg)
+
+[bootstrap fileupload 官方地址](http://plugins.krajee.com/file-input)
+
+在官方页面中注意：
+
+[必备](http://plugins.krajee.com/file-input#pre-requisites)，版本依赖
+
+[下载](http://plugins.krajee.com/file-input#manual-install)，zip包
+
+[举例](http://plugins.krajee.com/file-input/demo)，我看了半天也看的不是很明白……
+
+下面是我使用的代码
+
+js脚本代码片段：
+```
+<script type="text/javascript">
+    $(document).ready(function(){
+		initFileInput('multipart');
+		callback();
+    });
+
+// 组件初始化
+function initFileInput(ctrlName) {
+    var control = $('#' + ctrlName);
+    control.fileinput({
+        language: 'zh', //设置语言
+        uploadUrl: ip_port+"gradlejava/c/attributes/detectFacialLandmarksExample?upType=multipart", //上传的地址
+        allowedFileExtensions : ['jpeg', 'jpg', 'png','gif']//接收的文件后缀
+    });
+}
+
+//回调函数
+function callback(){
+	$("#multipart").on("fileuploaded", function (event, data, previewId, index) {
+
+        console.log(data);
+
+        var imageUrl = data.response.imageUrl;
+        if (imageUrl == undefined) {
+            toastr.error('文件格式类型不正确');
+            return;
+        }
+    });
+}
+
+</script>
+```
+
+html代码片段：
+
+```
+		<div class="container kv-main">
+            <form enctype="multipart/form-data">
+                <input id="multipart" name="multipart" type="file" multiple >
+            </form>
+            </div>
+        </div>
+```
+
 #### 2）http跨域问题
+
+（在服务器端设置了允许跨域，spring-boot设置）
+
+post在跨域时会先向服务器端发送一个options的请求，设置（xmlhttprequest对象）request.setRequestHeader('X-Request-With', null);可以使客户端不发送options请求。
+
 
 ### 六、遗留问题
 
